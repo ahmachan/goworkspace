@@ -1,0 +1,18 @@
+package users
+
+import (
+	"fmt"
+	"github.com/widuu/gomysql"
+)
+
+func getAllUsers() {
+	c, err := gomysql.SetConfig("./conf/conf.ini")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	data := c.Query("select * from user")
+
+        //data := c.Query("select username,password from user")
+	fmt.Println(data)
+}
